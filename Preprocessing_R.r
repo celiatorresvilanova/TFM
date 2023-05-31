@@ -39,15 +39,17 @@ for (fastq_files in read_total) {
 
 ########################################################################### DUPLICATIONS ###########################################################################
 
-# After the files were merged, fastqc reports, trimming, and alignment were carried out using Linux 4.18.0-425.13.1.el8_7.x86_64 (https://github.com/celiatorresvilanova/TFM/Preprocessing_Linux.sh). The fastqc reports were
-# examined, revealing a significant proportion of duplicate reads. In RNA-Seq, the distinction between artificial reads and normal read duplication caused by
-# over-sequencing highly expressed genes poses a challenge. This is because duplicate reads are frequently observed in RNA-Seq data and cannot be exclusively 
-# attributed to technical errors. Highly expressed genes often exceed the threshold of one read per base pair of the exon model, resulting in inevitable read
-# duplication. To address this issue, the decision was made to mark these duplicates using Sambamba in Linux 4.18.0-425.13.1.el8_7.x86_64 (https://github.com/celiatorresvilanova/TFM/Preprocessing_Linux.sh). Subsequently, 
-# the analysis was performed using dupRadar, a visualization tool designed for investigating duplications and gene expression patterns. DupRadar facilitates the
-# examination of the relationship between the percentage of duplications and gene expression. A significant proportion of duplications in genes with low expression 
-# levels was observed when Sambamba was used. Although the level of duplication increased with gene expression, it remained unreasonably high in genes with lower
-# expression. Therefore, the duplicates were removed, and the analysis proceeded with two datasets: the original data and the data with duplicates eliminated.
+# After the files were merged, fastqc reports, trimming, and alignment were carried out using Linux 4.18.0-425.13.1.el8_7.x86_64
+# (https://github.com/celiatorresvilanova/TFM/blob/main/Preprocessing_Linux.sh). The fastqc reports were examined, revealing a significant proportion of 
+# duplicate reads. In RNA-Seq, the distinction between artificial reads and normal read duplication caused by over-sequencing highly expressed genes poses
+# a challenge. This is because duplicate reads are frequently observed in RNA-Seq data and cannot be exclusively attributed to technical errors. Highly
+# expressed genes oftenexceed the threshold of one read per base pair of the exon model, resulting in inevitable read duplication. To address this issue,
+# the decision was made to mark these duplicates using Sambamba in Linux 4.18.0-425.13.1.el8_7.x86_64
+# (https://github.com/celiatorresvilanova/TFM/blob/main/Preprocessing_Linux.sh). Subsequently, the analysis was performed using dupRadar, a visualization tool 
+# designed for investigating duplications and gene expression patterns. DupRadar facilitates theexamination of the relationship between the percentage of 
+# duplications and gene expression. A significant proportion of duplications in genes with low expression levels was observed when Sambamba was used.
+# Although the level of duplication increased with gene expression, it remained unreasonably high in genes with lower expression. Therefore, the duplicates
+# were removed, and the analysis proceeded with two datasets: the original data and the data with duplicates eliminated.
 
 # The dupRadar was conducted with the following parameters:
     # The BAM and GTF files were specified in the variables bamDuprm and gtf, respectively. The BAM file needs to have the duplicates marked.
