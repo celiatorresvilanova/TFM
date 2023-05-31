@@ -7,7 +7,9 @@
 # Set the working directory
 cd /PROJECTES/MALARIA_IMMUNO/22.SAINT/Transcriptomics/Data
 
-# The merging of three reads per sample was performed using R 4.3.0 (https://github.com/celiatorresvilanova/TFM). Subsequently, FastQC reports were generated for the merged samples.
+# The merging of three reads per sample was performed using R 4.3.0 (https://github.com/celiatorresvilanova/TFM/Preprocessing_R). Subsequently, FastQC reports
+# were generated for the merged samples.
+
 mkdir merged/Report_merged
 fastqc -o merged/Reports_merged merged/*.fastq.gz
 
@@ -131,8 +133,8 @@ cat Alignments/Aligned.sortedByCoord.out.Log.final.out
 # In RNA-Seq, distinguishing between artificial reads and normal read duplication caused by over-sequencing highly expressed genes is challenging. This is because
 # duplicate reads are commonly observed in RNA-Seq, and it is not exclusively attributed to technical errors. Highly expressed genes often surpass the threshold of 
 # one read per base pair of the exon model, resulting in unavoidable read duplication. To handle this situation, I will mark the duplicates using Sambamba and then 
-# perform dupRadar in R 4.3.0 (https://github.com/celiatorresvilanova/TFM). DupRadar is a tool that allows visualizing the relationship between the percentage of 
-# duplications and gene expression. 
+# perform dupRadar in R 4.3.0 (https://github.com/celiatorresvilanova/TFM/Preprocessing_R). DupRadar is a tool that allows visualizing the relationship between the
+# percentage of duplications and gene expression. 
 
 sambamba markdup -t 32 -p --tmpdir Duplicates Alignments/Aligned.sortedByCoord.out.bam  Duplicates/Aligned.sortedByCoord.out.mark.bam
 
